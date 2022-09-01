@@ -1,0 +1,3 @@
+2022-09-01T21:34:45 - GET - /dino - AuthToken:123 
+2022-09-01T21:35:10 - POST - /dino - AuthToken:123 
+2022-09-01T21:35:14 - GET - / - AuthToken:123 
