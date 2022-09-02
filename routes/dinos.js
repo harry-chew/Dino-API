@@ -2,28 +2,45 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database');
 const dinodb = require('../dinodb');
+const validate = require('../validate');
 
-router.get('/', (req, res) => {
-    res.status(200).send(dinodb);
+router.get('/', async (req, res) => {
+    try {
+        const results = await db.promise().query(`SELECT * FROM dino`);
+        console.log(results[0]);
+        res.status(200).send(results[0]);
+    }
+    catch(err) {
+        res.status(404).send({msg: 'Could not retrieve.'});
+        console.log(err);
+    }
 });
 
 router.post('/', (req, res) => {
-    const { authorization } = req.headers;
-    if(authorization && authorization === '123') {
-        const dino = req.body;
-        dinodb.push(dino);
-        res.status(201).send(dinodb);
+    //const dino = req.body;
+    //dinodb.push(dino);
+    const { name } = req.body;
+    if(name) {
+        console.log(name);
+        try {
+            db.promise().query(`INSERT INTO dino (name) VALUES('${name}')`);
+            res.status(201).send({msg:'Added Dino'});
+        }
+        catch(err) {
+            console.log(err);
+        }
     }
-    else {
-        res.status(403).send('Forbidden');
-    }
-
+    //res.status(201).send(dinodb);
 });
 
-router.get('/:id', (req, res) => {
-    res.send(`Get Dino with ID: ${req.params.id}`);
+router.get('/:id', async (req, res) => {
+    try {
+        const results = await db.promise().query(`SELECT * FROM dino WHERE id=${req.params.id}`);
+        res.status(200).send(results[0]);
+    }
+    catch(err) {
+        console.log(err);
+    }
 });
-
-
 
 module.exports = router;
