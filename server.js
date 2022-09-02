@@ -17,7 +17,7 @@ app.use(async (req, res, next) => {
         if (err) {
           console.error(err);
         }
-        console.log(`${Date()} - ${req.method} - ${req.url}`);
+        console.log(content);
       });
     next();
 });
@@ -32,7 +32,6 @@ const dateToISOLikeButLocal = (date) => {
 };
 
 app.get('/', (req, res) => {
-    
     res.render('index');
 });
 
@@ -41,8 +40,6 @@ app.use('/api', apiRouter);
 
 const dinosRouter = require('./routes/dinos.js');
 app.use('/api/dino', dinosRouter);
-
-
 
 app.listen(8080, () => {
     console.log("Server started on port 8080");

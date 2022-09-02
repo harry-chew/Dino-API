@@ -4,6 +4,8 @@ const db = require('../database');
 const dinodb = require('../dinodb');
 const validate = require('../validate');
 
+const { check, validationResult } = require('express-validator');
+
 router.get('/', async (req, res) => {
     try {
         const results = await db.promise().query(`SELECT * FROM dino`);
@@ -16,9 +18,12 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', (req, res) => {
-    //const dino = req.body;
-    //dinodb.push(dino);
+router.post('/', check('name').notEmpty().withMessage('name cannot be empty'), (req, res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+        return res.status(400).json({errors : errors.array() });
+    }
+
     const { name } = req.body;
     if(name) {
         console.log(name);
@@ -30,7 +35,6 @@ router.post('/', (req, res) => {
             console.log(err);
         }
     }
-    //res.status(201).send(dinodb);
 });
 
 router.get('/:id', async (req, res) => {

@@ -56,3 +56,12 @@
 2022-09-02T08:29:35 - GET - /api - AuthToken:undefined 
 2022-09-02T08:30:03 - GET - / - AuthToken:undefined 
 2022-09-02T08:30:04 - GET - /api - AuthToken:undefined 
+2022-09-02T09:08:16 - GET - /api/dino - AuthToken:undefined 
+2022-09-02T09:08:27 - POST - /api/dino - AuthToken:123 
+2022-09-02T09:08:56 - POST - /api/dino - AuthToken:123 
+2022-09-02T09:09:34 - POST - /api/dino - AuthToken:123 
+2022-09-02T09:10:49 - POST - /api/dino - AuthToken:123 
+2022-09-02T09:11:12 - POST - /api/dino - AuthToken:123 
+2022-09-02T09:13:03 - POST - /api/dino - AuthToken:123 
+2022-09-02T09:14:42 - POST - /api/dino - AuthToken:123 
+2022-09-02T09:14:52 - POST - /api/dino - AuthToken:123 
