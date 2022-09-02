@@ -32,14 +32,15 @@ const dateToISOLikeButLocal = (date) => {
 };
 
 app.get('/', (req, res) => {
-    console.log("Hello World");
-    res.send("Hello World");
+    
+    res.render('index');
 });
 
-
+const apiRouter = require('./routes/api.js');
+app.use('/api', apiRouter);
 
 const dinosRouter = require('./routes/dinos.js');
-app.use('/dino', dinosRouter);
+app.use('/api/dino', dinosRouter);
 
 
 
