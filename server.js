@@ -42,5 +42,5 @@ const dinosRouter = require('./routes/dinos.js');
 app.use('/api/dino', dinosRouter);
 
 app.listen(8080, () => {
-    console.log("Server started on port 8080");
+    console.log("Server started at http://localhost:8080");
 });
