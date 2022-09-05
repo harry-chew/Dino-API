@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mdb = require('../mongodb');
-const Dino = require('../DinoSchema');
+const Dino = require('../MongoSchemas/DinoSchema');
 const validate = require('../validate');
 
 const { check, validationResult } = require('express-validator');
