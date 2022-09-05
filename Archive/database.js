@@ -1,5 +1,5 @@
 const mysql = require('mysql2');
-const conf = require('./conf');
+const conf = require('../conf');
 
 
 module.exports = mysql.createConnection({

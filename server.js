@@ -38,6 +38,9 @@ app.get('/', (req, res) => {
 const apiRouter = require('./routes/api.js');
 app.use('/api', apiRouter);
 
+const scrapeRouter = require('./routes/scrape.js');
+app.use('/api/scrape', scrapeRouter);
+
 const dinosRouter = require('./routes/dinos.js');
 app.use('/api/dino', dinosRouter);
 
