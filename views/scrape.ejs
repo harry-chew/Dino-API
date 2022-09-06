@@ -9,6 +9,17 @@
 <body>
     <h1>Dino Scraper</h1>
     <p>Please input a URL of a wiki page to scrape the info for a dinosaur.</p>
+    <input id="wikiInput" type="text"><input type="button" value="Get" onclick="getData()">
     <p>This will be returned as a json object.</p>
 </body>
+<script type="text/javascript">
+
+async function getData() {
+    const wikiURL = document.getElementById('wikiInput');
+    const url = wikiURL.value;
+
+    fetch('post', 'localhost:8080/api/scrape');
+}
+
+</script>
 </html>
