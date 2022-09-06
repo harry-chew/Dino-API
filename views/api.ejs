@@ -8,5 +8,24 @@
 </head>
 <body>
     <h1>This will be the API reference</h1>
+
+    <div class="endpoint">
+        <p>ROUTE: /api/dino - METHOD: GET</p>
+        <p>Will return ALL dinos currently stored in MongoDB and return as a JSON object.</p>
+    </div>
+
+    <div class="endpoint">
+        <p>ROUTE: /api/dino - METHOD: POST</p>
+        <p>You can add a dino by posting data to this endpoint.</p>
+        <p>Data struture as followed: </p>
+        <p>
+            {
+                "name": "the dinos name",
+                "image": "https://someurlfordino.com/someimagename.jpg",
+                "info": "some short information about the dino",
+                "description": "a longer description of the dino in question"
+            }
+        </p>
+    </div>
 </body>
 </html>
