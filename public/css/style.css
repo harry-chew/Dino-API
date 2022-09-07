@@ -1,0 +1,65 @@
+* {
+    padding : 0;
+    margin : 0;
+    border : 0;
+}
+.title, .info {
+    text-align: center;
+}
+
+.info {
+    background-color: rgba(122, 114, 59, 0.254);
+}
+
+.endpoint {
+    width : 100%;
+    background-color: rgba(0,0,0,0.1);
+    padding : 0.5em;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.page-wrapper div {
+    padding : 1em;
+}
+
+.sidebar {
+    min-width : 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-heading {
+    width : 100%;
+    background-color: rgba(0,0,0,0.1);
+    margin-top : 1em;
+    color : black;
+    text-decoration: none;
+}
+
+.sidebar-heading, .sidebar-link {
+    padding : 0.5em;
+}
+
+.sidebar-heading:hover, .sidebar-link:hover {
+    background-color: rgba(0,0,0,0.4);
+}
+
+
+.content {
+    width : 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content div p {
+    padding : 0.5em;
+}
+
+.json {
+    position: absolute;
+    left : 2em;
+}
