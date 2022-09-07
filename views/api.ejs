@@ -4,28 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title>API Reference</title>
 </head>
 <body>
-    <h1>This will be the API reference</h1>
+    <div class="page-wrapper">
+        <div class="sidebar">
+            <a href="#dino-get" class="sidebar-heading">Dino</p>
+            <a href="#dino-get" class="sidebar-link">/dino - GET</a>
+            <a href="#dino-post" class="sidebar-link">/dino - POST</a>
+            <a href="#scrape-get" class="sidebar-heading">Scrape</p>
+            <a href="#scrape-get" class="sidebar-link">/scrape - GET</a>
+            <a href="#scrape-post" class="sidebar-link">/scrape - POST</a>
+        </div>
+        <div class="content">
+            <div><h1 class="title">This will be the API reference</h1></div>
+            <div class="info">
+                <p>This is a small API, only using a few different end points.</p>
+            </div>
+            <div id="dino-get">
+                <p class="endpoint">ROUTE: /api/dino - METHOD: GET</p>
+                <p>Will return ALL dinos currently stored in MongoDB and return as a JSON object.</p>
+            </div>
 
-    <div class="endpoint">
-        <p>ROUTE: /api/dino - METHOD: GET</p>
-        <p>Will return ALL dinos currently stored in MongoDB and return as a JSON object.</p>
-    </div>
-
-    <div class="endpoint">
-        <p>ROUTE: /api/dino - METHOD: POST</p>
-        <p>You can add a dino by posting data to this endpoint.</p>
-        <p>Data struture as followed: </p>
-        <p>
-            {
-                "name": "the dinos name",
-                "image": "https://someurlfordino.com/someimagename.jpg",
-                "info": "some short information about the dino",
-                "description": "a longer description of the dino in question"
-            }
-        </p>
+            <div id="dino-post">
+                <p class="endpoint">ROUTE: /api/dino - METHOD: POST</p>
+                <p>You can add a dino by posting data to this endpoint.</p>
+                <p>Data struture as followed: </p>
+                <p>
+                    <pre>
+                        <code class="json">
+                            {
+                                "name": "the dinos name",
+                                "image": "https://someurlfordino.com/someimagename.jpg",
+                                "info": "some short information about the dino",
+                                "description": "a longer description of the dino in question"
+                            }
+                        </code>
+                    </pre>
+                </p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
