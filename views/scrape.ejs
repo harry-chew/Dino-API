@@ -11,14 +11,72 @@
     <p>Please input a URL of a wiki page to scrape the info for a dinosaur.</p>
     <input id="wikiInput" type="text"><input type="button" value="Get" onclick="getData()">
     <p>This will be returned as a json object.</p>
+
+    <p>Response Data</p>
+    <p id="responseData"></p>
+    <p id="title">Title</p>
+    <img src="" alt="" id="image">
+    <p id="info">Dino Info</p>
+    <p id="description">Dino longer description.</p>
+
+    <button id="postData">Save in DB</button>
 </body>
 <script type="text/javascript">
+
+const title = document.getElementById('title');
+const image = document.getElementById('image');
+const info = document.getElementById('info');
+const description = document.getElementById('description');
+
+const responseData = document.getElementById('responseData');
+
+const postDataButton = document.getElementById('postData');
+
+let postContent;
+postDataButton.addEventListener('click', saveData);
 
 async function getData() {
     const wikiURL = document.getElementById('wikiInput');
     const url = wikiURL.value;
+    //console.log(url);
+    postData(url);
+}
 
-    fetch('post', 'localhost:8080/api/scrape');
+async function postData(url) {
+    const rawResponse = await fetch('./scrape', {
+        method : 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({url})
+    });
+    const content = await rawResponse.json();
+
+    console.log(content);
+    postContent = JSON.stringify({content});
+    //responseData.innerHTML = JSON.stringify(content);
+
+    title.innerText = content.name;
+    image.src = content.img;
+    info.innerText = content.info;
+    description.innerText = content.description;
+
+}
+
+async function saveData() {
+    const rawResponse = await fetch('./dino', {
+        method : 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: postContent
+    });
+    const content = await rawResponse.json();
+
+    console.log(postContent);
+
 }
 
 </script>
