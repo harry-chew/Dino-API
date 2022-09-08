@@ -14,14 +14,15 @@ router.get('/', async (req, res) => {
 
 router. post('/', async (req, res) => {
     const url = req.body.url;
-    console.log(url);
+    //console.log(url);
     try {
         const scrapeDino = await scrapePage(url);
         console.log(scrapeDino);
         res.status(201).send(scrapeDino);
     }
-    catch {
-        res.status(404).send({msg:"failed"});
+    catch(e) {
+
+        res.status(404).send({msg:"failed", error: e});
     }
     
 });
@@ -30,6 +31,7 @@ async function scrapePage(url) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(url);
+
     const title = await page.$x('/html/body/div[3]/h1/i');
     const titleText = await(await title[0].getProperty('textContent')).jsonValue();
 
@@ -41,18 +43,14 @@ async function scrapePage(url) {
 
     const desc = await page.$x('/html/body/div[3]/div[3]/div[5]/div[1]/p[5]');
     const descText = await(await desc[0].getProperty('textContent')).jsonValue();
-
-    // for(let i = 0; i < info.length; i++) {
-    //     infoText.push(await(await info[i].getProperty('textContent')).jsonValue());
-    // }
     
     await browser.close();
 
     const returnObj = {
-        title : titleText,
-        img : imageSrc,
+        name : titleText,
+        image : imageSrc,
         info : infoText,
-        desription : descText
+        description : descText
     };
     return returnObj;
 };

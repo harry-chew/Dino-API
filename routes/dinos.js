@@ -17,26 +17,23 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', check('name').notEmpty().withMessage('name cannot be empty'), (req, res) => {
+router.post('/', check('content').notEmpty().withMessage('content cannot be empty'), (req, res) => {
+    console.log(req.body.content);
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
         return res.status(400).json({errors : errors.array() });
     }
     
-    const { name, colour } = req.body;
+    const { name, image, info, description } = req.body.content;
     if(name) {
         try {
-            const dino = new Dino({ name: name, colour: colour});
+            const dino = new Dino({ name: name, image: image, info: info, description: description});
             dino.save().then(() => {
                 console.log("Dino Saved", dino);
             });
             res.status(201).send(
                 {
-                    msg:'Added Dino', 
-                    dino : {
-                        name: name,
-                        colour: colour
-                    }
+                    msg:'Added Dino'
                 });
         }
         catch(err) {
