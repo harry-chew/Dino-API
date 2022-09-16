@@ -576,3 +576,17 @@
 2022-09-08T10:26:15 - POST - /api/scrape - AuthToken:undefined 
 2022-09-08T10:26:16 - GET - /api/undefined - AuthToken:undefined 
 2022-09-08T10:26:20 - POST - /api/dino - AuthToken:undefined 
+2022-09-13T11:43:43 - GET - / - AuthToken:undefined 
+2022-09-13T11:43:43 - GET - /favicon.ico - AuthToken:undefined 
+2022-09-13T11:43:47 - GET - /api - AuthToken:undefined 
+2022-09-13T11:44:49 - GET - /api/dino - AuthToken:undefined 
+2022-09-13T11:44:55 - GET - /api/ - AuthToken:undefined 
+2022-09-13T11:45:09 - GET - /api/dino - AuthToken:123 
+2022-09-13T11:45:55 - POST - /api/dino - AuthToken:123 
+2022-09-13T11:46:09 - POST - /api/dino - AuthToken:123 
+2022-09-13T11:46:17 - GET - /api/dino - AuthToken:123 
+2022-09-13T11:47:44 - GET - /api/scrape - AuthToken:undefined 
+2022-09-13T11:48:06 - POST - /api/scrape - AuthToken:undefined 
+2022-09-13T11:48:10 - GET - /api/undefined - AuthToken:undefined 
+2022-09-13T11:48:16 - POST - /api/dino - AuthToken:undefined 
+2022-09-13T11:48:28 - GET - /api/dino - AuthToken:123 

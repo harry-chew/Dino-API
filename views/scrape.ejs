@@ -22,62 +22,52 @@
     <button id="postData">Save in DB</button>
 </body>
 <script type="text/javascript">
+    const title = document.getElementById('title');
+    const image = document.getElementById('image');
+    const info = document.getElementById('info');
+    const description = document.getElementById('description');
+    const responseData = document.getElementById('responseData');
+    const postDataButton = document.getElementById('postData');
 
-const title = document.getElementById('title');
-const image = document.getElementById('image');
-const info = document.getElementById('info');
-const description = document.getElementById('description');
+    let postContent;
+    postDataButton.addEventListener('click', saveData);
 
-const responseData = document.getElementById('responseData');
+    async function getData() {
+        const wikiURL = document.getElementById('wikiInput');
+        const url = wikiURL.value;
+        //console.log(url);
+        postData(url);
+    }
 
-const postDataButton = document.getElementById('postData');
+    async function postData(url) {
+        const rawResponse = await fetch('./scrape', {
+            method : 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({url})
+        });
+        const content = await rawResponse.json();
 
-let postContent;
-postDataButton.addEventListener('click', saveData);
+        postContent = JSON.stringify({content});
 
-async function getData() {
-    const wikiURL = document.getElementById('wikiInput');
-    const url = wikiURL.value;
-    //console.log(url);
-    postData(url);
-}
+        title.innerText = content.name;
+        image.src = content.img;
+        info.innerText = content.info;
+        description.innerText = content.description;
+    }
 
-async function postData(url) {
-    const rawResponse = await fetch('./scrape', {
-        method : 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({url})
-    });
-    const content = await rawResponse.json();
-
-    console.log(content);
-    postContent = JSON.stringify({content});
-    //responseData.innerHTML = JSON.stringify(content);
-
-    title.innerText = content.name;
-    image.src = content.img;
-    info.innerText = content.info;
-    description.innerText = content.description;
-
-}
-
-async function saveData() {
-    const rawResponse = await fetch('./dino', {
-        method : 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: postContent
-    });
-    const content = await rawResponse.json();
-
-    console.log(postContent);
-
-}
-
+    async function saveData() {
+        const rawResponse = await fetch('./dino', {
+            method : 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: postContent
+        });
+        const content = await rawResponse.json();
+    }
 </script>
 </html>
